@@ -1,0 +1,44 @@
+##############################################################################
+# Repository scope
+# This repo currently tracks only the LCZ/ndown source patches plus the
+# archived source snapshot used for those fixes. Ignore the rest of the local
+# WRF tree unless it is explicitly added here later.
+##############################################################################
+*
+
+# Keep this control file tracked.
+!.gitignore
+
+# Tracked source patches in the live WRF tree.
+!Registry/
+Registry/*
+!Registry/Registry.EM_COMMON
+
+!dyn_em/
+dyn_em/*
+!dyn_em/module_initialize_real.F
+
+!main/
+main/*
+!main/ndown_em.F
+
+# Tracked snapshot of the modified source set.
+!src_ndown_urban_registry_fix_20260509/
+src_ndown_urban_registry_fix_20260509/*
+
+!src_ndown_urban_registry_fix_20260509/Registry/
+src_ndown_urban_registry_fix_20260509/Registry/*
+!src_ndown_urban_registry_fix_20260509/Registry/Registry.EM_COMMON
+
+!src_ndown_urban_registry_fix_20260509/dyn_em/
+src_ndown_urban_registry_fix_20260509/dyn_em/*
+!src_ndown_urban_registry_fix_20260509/dyn_em/module_initialize_real.F
+!src_ndown_urban_registry_fix_20260509/dyn_em/start_em.F
+
+!src_ndown_urban_registry_fix_20260509/main/
+src_ndown_urban_registry_fix_20260509/main/*
+!src_ndown_urban_registry_fix_20260509/main/ndown_em.F
+
+!src_ndown_urban_registry_fix_20260509/phys/
+src_ndown_urban_registry_fix_20260509/phys/*
+!src_ndown_urban_registry_fix_20260509/phys/module_sf_urban.F
