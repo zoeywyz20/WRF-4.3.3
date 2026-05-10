@@ -2103,6 +2103,12 @@ DEALLOCATE(z_at_q)
             DO i = its, MIN(ite,ide-1)
                dz8w(i,k,j) = (grid%phb(i,k+1,j)+grid%ph_2(i,k+1,j))/g - (grid%phb(i,k,j)+grid%ph_2(i,k,j))/g
                grid%rho(i,k,j) = 1./( grid%al(i,k,j)+grid%alb(i,k,j) ) 
+               IF ( grid%id .EQ. 1 .AND. i .EQ. 212 .AND. j .EQ. 227 .AND. k .EQ. 1 ) THEN
+                  print *, 'START_EM DZ8W DIAG i,j,k,dz8w = ', i, j, k, dz8w(i,k,j)
+                  print *, 'START_EM DZ8W DIAG ph1_0,ph1_1 = ', grid%ph_1(i,k,j), grid%ph_1(i,k+1,j)
+                  print *, 'START_EM DZ8W DIAG ph2_0,ph2_1 = ', grid%ph_2(i,k,j), grid%ph_2(i,k+1,j)
+                  print *, 'START_EM DZ8W DIAG phb_0,phb_1 = ', grid%phb(i,k,j), grid%phb(i,k+1,j)
+               END IF
             END DO
          END DO
       END DO
