@@ -17,6 +17,7 @@ Registry/*
 !dyn_em/
 dyn_em/*
 !dyn_em/module_initialize_real.F
+!dyn_em/start_em.F
 
 !main/
 main/*
@@ -24,6 +25,7 @@ main/*
 
 !phys/
 phys/*
+!phys/module_sf_noahdrv.F
 !phys/module_sf_urban.F
 
 # Tracked snapshot of the modified source set.
