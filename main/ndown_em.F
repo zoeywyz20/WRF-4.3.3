@@ -670,6 +670,19 @@ nested_grid%chem_in_opt = parent_grid%chem_in_opt
 
           END IF
 
+         IF ( config_flags%use_wudapt_lcz .EQ. 1 ) THEN
+            DO j = jps, MIN(jde-1,jpe)
+               DO i = ips, MIN(ide-1,ipe)
+                  IF ( nested_grid%FRC_URB2D(i,j) .GT. 0. .AND. NINT(nested_grid%lu_index(i,j)) .GE. 31 .AND. &
+                       NINT(nested_grid%lu_index(i,j)) .LE. 41 ) THEN
+                     nested_grid%ivgtyp(i,j)      = NINT(nested_grid%lu_index(i,j))
+                     nested_grid%vegcat(i,j)      = nested_grid%ivgtyp(i,j)
+                     nested_grid%UTYPE_URB2D(i,j) = nested_grid%ivgtyp(i,j) - 30
+                  END IF
+               END DO
+            END DO
+         END IF
+
           DO j = jps, MIN(jde-1,jpe)
             DO i = ips, MIN(ide-1,ipe)
                nested_grid%lu_index(i,j) = nested_grid%ivgtyp(i,j)
@@ -2241,5 +2254,4 @@ ENDIF
       enddo
 
       end  subroutine  coeff_mon
-
 

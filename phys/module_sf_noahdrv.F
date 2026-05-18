@@ -803,6 +803,9 @@ CONTAINS
 
         SFCTMP=T3D(i,1,j)
         ZLVL=0.5*DZ8W(i,1,j)
+        IF ( i .EQ. 212 .AND. j .EQ. 227 ) THEN
+          print *, 'NOAHDRV DZ8W DIAG i,j,dz8w,zlvl,psfc,sfcprs = ', i, j, DZ8W(i,1,j), ZLVL, PSFC, SFCPRS
+        END IF
 
 !        TH2=SFCTMP+(0.0097545*ZLVL)
 ! calculate SFCTH2 via Exner function vs lapse-rate (above)
@@ -1394,6 +1397,10 @@ CONTAINS
             if (I.eq.73.and.J.eq.125)THEN
                check = 1
             end if
+            if (I.eq.212 .and. J.eq.227) THEN
+               print *, 'NOAHDRV URBAN PRE i,j,utype,frc,za,hgt,mh,stdh,lb = ', &
+                        I, J, UTYPE_URB, frc_urb, ZA_URB, hgt_urb, mh_urb, stdh_urb, lb_urb
+            end if
 !
 ! Call urban
             CALL cal_mon_day(julian,julyr,jmonth,jday)
@@ -1418,6 +1425,10 @@ CONTAINS
                        TGRL_URB,SMR_URB,CMGR_URB,CHGR_URB,jmonth,       & ! H
                        DRELR_URB,DRELB_URB,                             & ! H
                        DRELG_URB,FLXHUMR_URB,FLXHUMB_URB,FLXHUMG_URB)                            
+            if (I.eq.212 .and. J.eq.227) THEN
+               print *, 'NOAHDRV URBAN POST i,j,ts,qs,sh,lh,ust,znt = ', &
+                        I, J, TS_URB, QS_URB, SH_URB, LH_URB, UST_URB, ZNT_URB
+            end if
 
 #if 0
           IF(IPRINT) THEN
@@ -4687,6 +4698,10 @@ SUBROUTINE lsm_mosaic(DZ8W,QV3D,P8W3D,T3D,TSK,                      &
                   if (I.eq.73.and.J.eq.125)THEN
                      check = 1
                   end if
+                  if (I.eq.212 .and. J.eq.227) THEN
+                     print *, 'NOAHDRV URBAN PRE i,j,utype,frc,za,hgt,mh,stdh,lb = ', &
+                              I, J, UTYPE_URB, frc_urb, ZA_URB, hgt_urb, mh_urb, stdh_urb, lb_urb
+                  end if
       !
       ! Call urban
                   CALL cal_mon_day(julian,julyr,jmonth,jday)        
@@ -4711,6 +4726,10 @@ SUBROUTINE lsm_mosaic(DZ8W,QV3D,P8W3D,T3D,TSK,                      &
                              TGRL_URB,SMR_URB,CMGR_URB,CHGR_URB,jmonth,       & ! H
                              DRELR_URB,DRELB_URB,                             & ! H
                              DRELG_URB,FLXHUMR_URB,FLXHUMB_URB,FLXHUMG_URB)  
+                  if (I.eq.212 .and. J.eq.227) THEN
+                     print *, 'NOAHDRV URBAN POST i,j,ts,qs,sh,lh,ust,znt = ', &
+                              I, J, TS_URB, QS_URB, SH_URB, LH_URB, UST_URB, ZNT_URB
+                  end if
       
 #if 0
                 IF(IPRINT) THEN

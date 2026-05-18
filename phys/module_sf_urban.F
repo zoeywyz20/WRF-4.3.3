@@ -784,6 +784,12 @@ use module_wrf_error
    if(alhoption==1) ALH = ALH*alhdiuprf(tloc2)*alhseason(Kalh)
 
    IF( ZDC+Z0C+2. >= ZA) THEN
+    WRITE(mesg,*) 'URBAN FATAL DIAG UTYPE,ZA,ZR,ZDC,Z0C = ', UTYPE, ZA, ZR, ZDC, Z0C
+    WRITE_MESSAGE(mesg)
+    WRITE(mesg,*) 'URBAN FATAL DIAG MH,STDH,LP,HGT,FRC,LB = ', mh_urb, stdh_urb, lp_urb, hgt_urb, frc_urb, lb_urb
+    WRITE_MESSAGE(mesg)
+    WRITE(mesg,*) 'URBAN FATAL DIAG LF(1:4) = ', lf_urb(1), lf_urb(2), lf_urb(3), lf_urb(4)
+    WRITE_MESSAGE(mesg)
     FATAL_ERROR("ZDC + Z0C + 2m is larger than the 1st WRF level - Stop in subroutine urban - change ZDC and Z0C" ) 
    END IF
 

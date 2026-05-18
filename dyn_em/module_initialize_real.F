@@ -3062,6 +3062,20 @@ integer::oops1,oops2
 
       END IF
 
+      IF ( config_flags%use_wudapt_lcz .EQ. 1 ) THEN
+         DO j = jts, MIN(jde-1,jte)
+            DO i = its, MIN(ide-1,ite)
+               IF ( skip_middle_points_t ( ids , ide , jds , jde , i , j , em_width , hold_ups ) ) CYCLE
+               IF ( grid%FRC_URB2D(i,j) .GT. 0. .AND. NINT(grid%lu_index(i,j)) .GE. 31 .AND. &
+                    NINT(grid%lu_index(i,j)) .LE. 41 ) THEN
+                  grid%ivgtyp(i,j)      = NINT(grid%lu_index(i,j))
+                  grid%vegcat(i,j)      = grid%ivgtyp(i,j)
+                  grid%UTYPE_URB2D(i,j) = grid%ivgtyp(i,j) - 30
+               END IF
+            END DO
+         END DO
+      END IF
+
       !  Adjustments for the seaice field PRIOR to the grid%tslb computations.  This is
       !  is for the 5-layer scheme.
 
